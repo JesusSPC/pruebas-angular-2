@@ -1,0 +1,57 @@
+<h2>ngClass</h2>
+<div [ngClass]="alerta" class="alert" role="alert">
+  Cambiando clases de la alerta por variable
+</div>
+<button type="button" class="btn btn-info" (click)="alerta = 'alert-info'">
+  Info
+</button>
+<button
+  type="button"
+  class="btn btn-success"
+  (click)="alerta = 'alert-success'"
+>
+  Success
+</button>
+
+<br /><br />
+
+<h3
+  [ngClass]="{
+    'text-danger': propiedades.danger,
+    'text-info': !propiedades.danger
+  }"
+>
+  Cambiando clase con comportamiento por objeto
+</h3>
+
+<button
+  type="button"
+  class="btn btn-danger"
+  (click)="propiedades.danger = !propiedades.danger"
+  [ngClass]="{
+    'btn-danger': propiedades.danger,
+    'btn-info': !propiedades.danger
+  }"
+>
+  Cambiar
+</button>
+
+<br />
+<br />
+
+<h2>Proceso asíncrono</h2>
+
+<button
+  (click)="ejecutar()"
+  type="button"
+  class="btn btn-primary"
+  [disabled]="loading"
+>
+  <i
+    [ngClass]="{ 'fa-save': !loading, 'fa-refresh fa-spin': loading }"
+    class="fa"
+  >
+  </i>
+  <span *ngIf="!loading"> Guardar Cambios</span>
+  <span *ngIf="loading"> Guardando</span>
+</button>
